@@ -25,7 +25,6 @@ class ArticleController extends Controller
          // Extraction et sécurisation des valeurs passées dans le body de la requête
         $title = htmlspecialchars($request->input('title'), ENT_QUOTES, 'UTF-8');
         $content = htmlspecialchars($request->input('content'), ENT_QUOTES, 'UTF-8');
-        $user_id = htmlspecialchars($request->input('user_id'), ENT_QUOTES, 'UTF-8');
 
         // Création d'une nouvelle instance Article
         $article = new Article();
@@ -33,7 +32,6 @@ class ArticleController extends Controller
         // Sauvegarde de l'article
         $article->title = $title;
         $article->content = $content;
-        $article->user_id = $user_id;
 
         // Gestion de la réponse HTTP
         if ($article->save()){
