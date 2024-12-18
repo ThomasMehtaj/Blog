@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LikeController;
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\GuestMiddleware;
 
@@ -39,6 +40,12 @@ Route::post('/logout', [UserController::class, 'logout']);
 
 // Route pour récupérer l'utilisateur connecté
 Route::get('/me', [UserController::class, 'me'])->name('me');
+
+//Route qui permet de liker un article
+Route::post('/article/like', [LikeController::class, 'create']);
+
+//Route qui permet de supprimer un like d'un article
+Route::delete('/article/like', [LikeController::class, 'delete']);
 });
 
 // Routes pour l'authentification accessibles aux invités

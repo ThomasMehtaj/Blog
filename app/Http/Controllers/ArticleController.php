@@ -13,7 +13,7 @@ class ArticleController extends Controller
      */
     public function list()
     {
-        $articles = Article::all();
+        $articles = Article::with('likes')->get();
         return $articles; 
     }
 
@@ -46,7 +46,7 @@ class ArticleController extends Controller
      */
     public function read(string $id)
     {
-        $article = Article::findOrFail($id);
+        $article = Article::with('likes')->findOrFail($id);
         return $article;
     }
 

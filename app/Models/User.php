@@ -57,4 +57,9 @@ class User extends Authenticatable implements JWTSubject
     {
     return [];
     }
+
+    public function likes(){
+
+        return $this->belongsToMany(Article::class,'likes');
+    }
 }
